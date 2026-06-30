@@ -1,0 +1,167 @@
+Metadata-Version: 2.4
+Name: sglang
+Version: 0.5.12.post1.dev20260602+g38d4c9ba8
+Summary: SGLang is a fast serving framework for large language models and vision language models.
+Project-URL: Homepage, https://github.com/sgl-project/sglang
+Project-URL: Bug Tracker, https://github.com/sgl-project/sglang/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: aiohttp
+Requires-Dist: requests
+Requires-Dist: tqdm
+Requires-Dist: numpy
+Requires-Dist: IPython
+Requires-Dist: setproctitle
+Provides-Extra: runtime-common
+Requires-Dist: IPython; extra == "runtime-common"
+Requires-Dist: aiohttp; extra == "runtime-common"
+Requires-Dist: apache-tvm-ffi; extra == "runtime-common"
+Requires-Dist: anthropic>=0.20.0; extra == "runtime-common"
+Requires-Dist: blobfile==3.0.0; extra == "runtime-common"
+Requires-Dist: av; extra == "runtime-common"
+Requires-Dist: build; extra == "runtime-common"
+Requires-Dist: compressed-tensors; extra == "runtime-common"
+Requires-Dist: datasets; extra == "runtime-common"
+Requires-Dist: easydict; extra == "runtime-common"
+Requires-Dist: einops; extra == "runtime-common"
+Requires-Dist: fastapi; extra == "runtime-common"
+Requires-Dist: gguf; extra == "runtime-common"
+Requires-Dist: interegular; extra == "runtime-common"
+Requires-Dist: llguidance<0.8.0,>=0.7.11; extra == "runtime-common"
+Requires-Dist: modelscope; extra == "runtime-common"
+Requires-Dist: msgspec; extra == "runtime-common"
+Requires-Dist: ninja; extra == "runtime-common"
+Requires-Dist: numpy; extra == "runtime-common"
+Requires-Dist: openai-harmony==0.0.4; extra == "runtime-common"
+Requires-Dist: openai==2.6.1; extra == "runtime-common"
+Requires-Dist: orjson; extra == "runtime-common"
+Requires-Dist: outlines==0.1.11; extra == "runtime-common"
+Requires-Dist: packaging; extra == "runtime-common"
+Requires-Dist: partial_json_parser; extra == "runtime-common"
+Requires-Dist: pillow; extra == "runtime-common"
+Requires-Dist: prometheus-client>=0.20.0; extra == "runtime-common"
+Requires-Dist: psutil; extra == "runtime-common"
+Requires-Dist: py-spy; extra == "runtime-common"
+Requires-Dist: pybase64; extra == "runtime-common"
+Requires-Dist: pydantic; extra == "runtime-common"
+Requires-Dist: python-multipart; extra == "runtime-common"
+Requires-Dist: pyzmq>=25.1.2; extra == "runtime-common"
+Requires-Dist: requests; extra == "runtime-common"
+Requires-Dist: scipy; extra == "runtime-common"
+Requires-Dist: sentencepiece; extra == "runtime-common"
+Requires-Dist: setproctitle; extra == "runtime-common"
+Requires-Dist: soundfile==0.13.1; extra == "runtime-common"
+Requires-Dist: tiktoken; extra == "runtime-common"
+Requires-Dist: timm==1.0.16; extra == "runtime-common"
+Requires-Dist: torchao==0.9.0; extra == "runtime-common"
+Requires-Dist: tqdm; extra == "runtime-common"
+Requires-Dist: mistral_common>=1.11.0; extra == "runtime-common"
+Requires-Dist: transformers==5.8.1; extra == "runtime-common"
+Requires-Dist: uvicorn; extra == "runtime-common"
+Requires-Dist: uvloop; extra == "runtime-common"
+Requires-Dist: xgrammar==0.2.1; extra == "runtime-common"
+Requires-Dist: smg-grpc-servicer>=0.5.0; extra == "runtime-common"
+Provides-Extra: diffusion-common
+Requires-Dist: PyYAML==6.0.1; extra == "diffusion-common"
+Requires-Dist: cloudpickle; extra == "diffusion-common"
+Requires-Dist: diffusers==0.37.0; extra == "diffusion-common"
+Requires-Dist: imageio==2.36.0; extra == "diffusion-common"
+Requires-Dist: imageio-ffmpeg==0.5.1; extra == "diffusion-common"
+Requires-Dist: moviepy>=2.0.0; extra == "diffusion-common"
+Requires-Dist: opencv-python-headless==4.10.0.84; extra == "diffusion-common"
+Requires-Dist: remote-pdb; extra == "diffusion-common"
+Requires-Dist: addict; extra == "diffusion-common"
+Requires-Dist: scikit-image==0.25.2; extra == "diffusion-common"
+Requires-Dist: trimesh>=4.0.0; extra == "diffusion-common"
+Requires-Dist: xatlas; extra == "diffusion-common"
+Provides-Extra: tracing
+Requires-Dist: opentelemetry-sdk; extra == "tracing"
+Requires-Dist: opentelemetry-api; extra == "tracing"
+Requires-Dist: opentelemetry-exporter-otlp; extra == "tracing"
+Requires-Dist: opentelemetry-exporter-otlp-proto-grpc; extra == "tracing"
+Provides-Extra: srt-hip
+Requires-Dist: sglang[runtime_common]; extra == "srt-hip"
+Requires-Dist: torch; extra == "srt-hip"
+Requires-Dist: petit_kernel==0.0.2; extra == "srt-hip"
+Requires-Dist: wave-lang==3.8.2; extra == "srt-hip"
+Requires-Dist: compressed-tensors==0.15.0; extra == "srt-hip"
+Provides-Extra: diffusion-hip
+Requires-Dist: sglang[diffusion_common]; extra == "diffusion-hip"
+Requires-Dist: peft<0.19.0,>=0.18.0; extra == "diffusion-hip"
+Requires-Dist: st_attn==0.0.7; extra == "diffusion-hip"
+Requires-Dist: vsa==0.0.4; extra == "diffusion-hip"
+Requires-Dist: runai_model_streamer>=0.15.5; extra == "diffusion-hip"
+Requires-Dist: cache-dit==1.3.0; extra == "diffusion-hip"
+Provides-Extra: srt-hpu
+Requires-Dist: sglang[runtime_common]; extra == "srt-hpu"
+Provides-Extra: srt-musa
+Requires-Dist: sglang[runtime_common]; extra == "srt-musa"
+Requires-Dist: torch; extra == "srt-musa"
+Requires-Dist: torch_musa; extra == "srt-musa"
+Requires-Dist: torchada>=0.1.57; extra == "srt-musa"
+Requires-Dist: mthreads-ml-py; extra == "srt-musa"
+Requires-Dist: mate>=0.2.0; extra == "srt-musa"
+Requires-Dist: deep-gemm>=0.1.3; extra == "srt-musa"
+Requires-Dist: flash_attn_3>=0.1.4; extra == "srt-musa"
+Requires-Dist: numpy<2.0; extra == "srt-musa"
+Provides-Extra: diffusion-musa
+Requires-Dist: sglang[diffusion_common]; extra == "diffusion-musa"
+Requires-Dist: st_attn==0.0.7; extra == "diffusion-musa"
+Requires-Dist: vsa==0.0.4; extra == "diffusion-musa"
+Requires-Dist: runai_model_streamer>=0.15.5; extra == "diffusion-musa"
+Requires-Dist: cache-dit==1.1.8; extra == "diffusion-musa"
+Provides-Extra: srt-mps
+Requires-Dist: sglang[runtime_common]; extra == "srt-mps"
+Requires-Dist: torch==2.11.0; extra == "srt-mps"
+Requires-Dist: torchao==0.9.0; extra == "srt-mps"
+Requires-Dist: torchaudio==2.11.0; extra == "srt-mps"
+Requires-Dist: torchvision; extra == "srt-mps"
+Requires-Dist: mlx; extra == "srt-mps"
+Requires-Dist: mlx-lm; extra == "srt-mps"
+Provides-Extra: diffusion-mps
+Requires-Dist: sglang[diffusion_common]; extra == "diffusion-mps"
+Requires-Dist: cloudpickle==3.1.2; extra == "diffusion-mps"
+Requires-Dist: remote-pdb==2.1.0; extra == "diffusion-mps"
+Requires-Dist: cache-dit==1.2.3; extra == "diffusion-mps"
+Requires-Dist: addict==2.4.0; extra == "diffusion-mps"
+Requires-Dist: av==16.1.0; extra == "diffusion-mps"
+Requires-Dist: scikit-image==0.25.2; extra == "diffusion-mps"
+Requires-Dist: trimesh>=4.0.0; extra == "diffusion-mps"
+Requires-Dist: xatlas; extra == "diffusion-mps"
+Provides-Extra: test
+Requires-Dist: accelerate; extra == "test"
+Requires-Dist: expecttest; extra == "test"
+Requires-Dist: gguf; extra == "test"
+Requires-Dist: jsonlines; extra == "test"
+Requires-Dist: matplotlib; extra == "test"
+Requires-Dist: pandas; extra == "test"
+Requires-Dist: peft<0.19.0,>=0.18.0; extra == "test"
+Requires-Dist: pytest; extra == "test"
+Requires-Dist: sentence_transformers; extra == "test"
+Requires-Dist: tabulate; extra == "test"
+Provides-Extra: all-hip
+Requires-Dist: sglang[srt_hip]; extra == "all-hip"
+Requires-Dist: sglang[diffusion_hip]; extra == "all-hip"
+Requires-Dist: sglang[tracing]; extra == "all-hip"
+Provides-Extra: all-hpu
+Requires-Dist: sglang[srt_hpu]; extra == "all-hpu"
+Provides-Extra: all-musa
+Requires-Dist: sglang[srt_musa]; extra == "all-musa"
+Requires-Dist: sglang[diffusion_musa]; extra == "all-musa"
+Provides-Extra: all-mps
+Requires-Dist: sglang[srt_mps]; extra == "all-mps"
+Requires-Dist: sglang[diffusion_mps]; extra == "all-mps"
+Provides-Extra: dev-hip
+Requires-Dist: sglang[all_hip]; extra == "dev-hip"
+Requires-Dist: sglang[test]; extra == "dev-hip"
+Provides-Extra: dev-hpu
+Requires-Dist: sglang[all_hpu]; extra == "dev-hpu"
+Requires-Dist: sglang[test]; extra == "dev-hpu"
+Provides-Extra: dev-musa
+Requires-Dist: sglang[all_musa]; extra == "dev-musa"
+Requires-Dist: sglang[test]; extra == "dev-musa"
+Provides-Extra: dev-mps
+Requires-Dist: sglang[all_mps]; extra == "dev-mps"
+Requires-Dist: sglang[test]; extra == "dev-mps"

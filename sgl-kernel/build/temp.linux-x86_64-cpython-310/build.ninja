@@ -1,0 +1,50 @@
+ninja_required_version = 1.3
+cxx = c++
+nvcc = /opt/rocm/bin/hipcc
+
+cflags = -Wno-unused-result -Wsign-compare -DNDEBUG -g -fwrapv -O2 -Wall -g -fstack-protector-strong -Wformat -Werror=format-security -g -fwrapv -O2 -fPIC -I/sgl-workspace/sglang/sgl-kernel/include -I/sgl-workspace/sglang/sgl-kernel/include/impl -I/sgl-workspace/sglang/sgl-kernel/csrc -I/opt/venv/lib/python3.10/site-packages/torch/include -I/opt/venv/lib/python3.10/site-packages/torch/include/torch/csrc/api/include -I/opt/venv/lib/python3.10/site-packages/torch/include/THH -I/opt/rocm/include -I/opt/venv/include -I/usr/include/python3.10 -c
+post_cflags = -D__HIP_PLATFORM_AMD__=1 -DUSE_ROCM=1 -DHIPBLAS_V2 -fPIC -D__HIP_PLATFORM_AMD__=1 -DUSE_ROCM=1 -DHIPBLAS_V2 -fPIC -O3 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1016"' -DTORCH_EXTENSION_NAME=common_ops -std=c++17
+cuda_cflags = -I/sgl-workspace/sglang/sgl-kernel/include -I/sgl-workspace/sglang/sgl-kernel/include/impl -I/sgl-workspace/sglang/sgl-kernel/csrc -I/opt/venv/lib/python3.10/site-packages/torch/include -I/opt/venv/lib/python3.10/site-packages/torch/include/torch/csrc/api/include -I/opt/venv/lib/python3.10/site-packages/torch/include/THH -I/opt/rocm/include -I/opt/venv/include -I/usr/include/python3.10 -c
+cuda_post_cflags = -D__HIP_PLATFORM_AMD__=1 -DUSE_ROCM=1 -DHIPBLAS_V2 -fPIC -DCUDA_HAS_FP16=1 -D__HIP_NO_HALF_OPERATORS__=1 -D__HIP_NO_HALF_CONVERSIONS__=1 -DHIP_ENABLE_WARP_SYNC_BUILTINS=1 -DNDEBUG -DOPERATOR_NAMESPACE=sgl_kernel -O3 -Xcompiler -fPIC -std=c++17 --amdgpu-target=gfx942 -DENABLE_BF16 -DENABLE_FP8 -DHIP_FP8_TYPE_FNUZ -DSGL_TOPK_DYNAMIC_SMEM_BYTES=49152 -DTORCH_API_INCLUDE_EXTENSION_H '-DPYBIND11_COMPILER_TYPE="_gcc"' '-DPYBIND11_STDLIB="_libstdcpp"' '-DPYBIND11_BUILD_ABI="_cxxabi1016"' -DTORCH_EXTENSION_NAME=common_ops -fno-gpu-rdc
+cuda_dlink_post_cflags = 
+sycl_dlink_post_cflags = 
+ldflags = 
+
+rule compile
+  command = $cxx -MMD -MF $out.d $cflags -c $in -o $out $post_cflags
+  depfile = $out.d
+  deps = gcc
+
+rule cuda_compile
+  command = $nvcc  $cuda_cflags -c $in -o $out $cuda_post_cflags
+
+
+
+
+
+
+
+build /sgl-workspace/sglang/sgl-kernel/build/temp.linux-x86_64-cpython-310/csrc/allreduce/custom_all_reduce.o: cuda_compile /sgl-workspace/sglang/sgl-kernel/csrc/allreduce/custom_all_reduce.hip
+build /sgl-workspace/sglang/sgl-kernel/build/temp.linux-x86_64-cpython-310/csrc/allreduce/deterministic_all_reduce_hip.o: cuda_compile /sgl-workspace/sglang/sgl-kernel/csrc/allreduce/deterministic_all_reduce_hip.hip
+build /sgl-workspace/sglang/sgl-kernel/build/temp.linux-x86_64-cpython-310/csrc/allreduce/quick_all_reduce.o: cuda_compile /sgl-workspace/sglang/sgl-kernel/csrc/allreduce/quick_all_reduce.hip
+build /sgl-workspace/sglang/sgl-kernel/build/temp.linux-x86_64-cpython-310/csrc/common_extension_rocm.o: compile /sgl-workspace/sglang/sgl-kernel/csrc/common_extension_rocm.cc
+build /sgl-workspace/sglang/sgl-kernel/build/temp.linux-x86_64-cpython-310/csrc/elementwise/activation.o: cuda_compile /sgl-workspace/sglang/sgl-kernel/csrc/elementwise/activation.hip
+build /sgl-workspace/sglang/sgl-kernel/build/temp.linux-x86_64-cpython-310/csrc/elementwise/deepseek_v4_topk.o: cuda_compile /sgl-workspace/sglang/sgl-kernel/csrc/elementwise/deepseek_v4_topk.hip
+build /sgl-workspace/sglang/sgl-kernel/build/temp.linux-x86_64-cpython-310/csrc/elementwise/dsv4_norm_rope.o: cuda_compile /sgl-workspace/sglang/sgl-kernel/csrc/elementwise/dsv4_norm_rope.hip
+build /sgl-workspace/sglang/sgl-kernel/build/temp.linux-x86_64-cpython-310/csrc/elementwise/pos_enc.o: cuda_compile /sgl-workspace/sglang/sgl-kernel/csrc/elementwise/pos_enc.hip
+build /sgl-workspace/sglang/sgl-kernel/build/temp.linux-x86_64-cpython-310/csrc/elementwise/topk.o: cuda_compile /sgl-workspace/sglang/sgl-kernel/csrc/elementwise/topk.hip
+build /sgl-workspace/sglang/sgl-kernel/build/temp.linux-x86_64-cpython-310/csrc/grammar/apply_token_bitmask_inplace_hip.o: cuda_compile /sgl-workspace/sglang/sgl-kernel/csrc/grammar/apply_token_bitmask_inplace_hip.hip
+build /sgl-workspace/sglang/sgl-kernel/build/temp.linux-x86_64-cpython-310/csrc/kvcacheio/transfer.o: cuda_compile /sgl-workspace/sglang/sgl-kernel/csrc/kvcacheio/transfer.hip
+build /sgl-workspace/sglang/sgl-kernel/build/temp.linux-x86_64-cpython-310/csrc/memory/weak_ref_tensor.o: compile /sgl-workspace/sglang/sgl-kernel/csrc/memory/weak_ref_tensor.cpp
+build /sgl-workspace/sglang/sgl-kernel/build/temp.linux-x86_64-cpython-310/csrc/moe/moe_align_kernel.o: cuda_compile /sgl-workspace/sglang/sgl-kernel/csrc/moe/moe_align_kernel.hip
+build /sgl-workspace/sglang/sgl-kernel/build/temp.linux-x86_64-cpython-310/csrc/moe/moe_topk_sigmoid_kernels.o: cuda_compile /sgl-workspace/sglang/sgl-kernel/csrc/moe/moe_topk_sigmoid_kernels.hip
+build /sgl-workspace/sglang/sgl-kernel/build/temp.linux-x86_64-cpython-310/csrc/moe/moe_topk_softmax_kernels.o: cuda_compile /sgl-workspace/sglang/sgl-kernel/csrc/moe/moe_topk_softmax_kernels.hip
+build /sgl-workspace/sglang/sgl-kernel/build/temp.linux-x86_64-cpython-310/csrc/speculative/eagle_utils.o: cuda_compile /sgl-workspace/sglang/sgl-kernel/csrc/speculative/eagle_utils.hip
+
+
+
+
+
+
+
+

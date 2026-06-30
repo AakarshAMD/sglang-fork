@@ -1,0 +1,5 @@
+# Rust build artifacts (compiled output of sgl-model-gateway router; not source)
+sgl-model-gateway/bindings/python/target/
+# Python bytecode caches
+__pycache__/
+*.pyc

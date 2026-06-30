@@ -1,0 +1,17 @@
+# ninja log v7
+3	5997	1780412226530030179	/sgl-workspace/sglang/sgl-kernel/build/temp.linux-x86_64-cpython-310/csrc/elementwise/topk.o	2938bc0cac652446
+2	6062	1780412226526030164	/sgl-workspace/sglang/sgl-kernel/build/temp.linux-x86_64-cpython-310/csrc/elementwise/deepseek_v4_topk.o	db8340c2796e69ee
+4	8485	1780412226530030179	/sgl-workspace/sglang/sgl-kernel/build/temp.linux-x86_64-cpython-310/csrc/memory/weak_ref_tensor.o	7e1cd68ac6a4ede0
+5	19134	1780412226530030179	/sgl-workspace/sglang/sgl-kernel/build/temp.linux-x86_64-cpython-310/csrc/speculative/eagle_utils.o	6199d44e40760dbd
+1	28994	1780412226526030164	/sgl-workspace/sglang/sgl-kernel/build/temp.linux-x86_64-cpython-310/csrc/common_extension_rocm.o	94dd814165aa9dae
+3	33494	1780412226530030179	/sgl-workspace/sglang/sgl-kernel/build/temp.linux-x86_64-cpython-310/csrc/kvcacheio/transfer.o	3309e48dd41735cc
+3	33810	1780412226530030179	/sgl-workspace/sglang/sgl-kernel/build/temp.linux-x86_64-cpython-310/csrc/grammar/apply_token_bitmask_inplace_hip.o	9ab08039b51ed7bc
+0	33948	1780412226526030164	/sgl-workspace/sglang/sgl-kernel/build/temp.linux-x86_64-cpython-310/csrc/allreduce/deterministic_all_reduce_hip.o	aa0d0173c388e302
+0	34263	1780412226526030164	/sgl-workspace/sglang/sgl-kernel/build/temp.linux-x86_64-cpython-310/csrc/allreduce/custom_all_reduce.o	f6ab8a9fb2be2027
+2	34296	1780412226526030164	/sgl-workspace/sglang/sgl-kernel/build/temp.linux-x86_64-cpython-310/csrc/elementwise/pos_enc.o	47ad59eaa5c0fdd
+2	34367	1780412226526030164	/sgl-workspace/sglang/sgl-kernel/build/temp.linux-x86_64-cpython-310/csrc/elementwise/dsv4_norm_rope.o	dfca97112278a260
+4	34394	1780412226530030179	/sgl-workspace/sglang/sgl-kernel/build/temp.linux-x86_64-cpython-310/csrc/moe/moe_align_kernel.o	e15f5cbaa5b1956
+1	34529	1780412226526030164	/sgl-workspace/sglang/sgl-kernel/build/temp.linux-x86_64-cpython-310/csrc/elementwise/activation.o	7f853e1e01846041
+4	38068	1780412226530030179	/sgl-workspace/sglang/sgl-kernel/build/temp.linux-x86_64-cpython-310/csrc/moe/moe_topk_sigmoid_kernels.o	768bd674ca3c96ea
+5	39236	1780412226530030179	/sgl-workspace/sglang/sgl-kernel/build/temp.linux-x86_64-cpython-310/csrc/moe/moe_topk_softmax_kernels.o	3a9dd2646c2be329
+1	40567	1780412226526030164	/sgl-workspace/sglang/sgl-kernel/build/temp.linux-x86_64-cpython-310/csrc/allreduce/quick_all_reduce.o	e13caf527e639ebd
